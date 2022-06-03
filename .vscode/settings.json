@@ -1,6 +1,4 @@
 {
-"eslint.format.enable": true,
-"conventionalCommits.scopes": [
-    "boilerplate"
-]
+  "eslint.format.enable": true,
+  "conventionalCommits.scopes": ["boilerplate"]
 }

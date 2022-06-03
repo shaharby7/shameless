@@ -9,6 +9,7 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
+  globalSetup:"./tests/register",
   bail: 0,
   cacheDirectory: "/tmp/jest_rs",
   clearMocks: true,
