@@ -19,5 +19,5 @@ module.exports = {
   coveragePathIgnorePatterns: ["/node_modules/"],
   coverageProvider: "v8",
   moduleDirectories: ["node_modules"],
-  testMatch: [`**/tests/*.test.ts`],
+  testMatch: [`tests/*.test.ts`],
 };

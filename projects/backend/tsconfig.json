@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "dist",
-    "types": ["node", "ts-node", "jest"]
+    "types": ["node", "ts-node", "jest","ts-dotenv"]
   },
-  "include": ["src/**/*", "tests/**/*"]
+  "include": ["src/**/*"],
 }
