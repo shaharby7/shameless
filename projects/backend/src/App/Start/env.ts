@@ -1,35 +1,25 @@
-import { EnvType, load } from "ts-dotenv";
+import envSchema from "env-schema";
+import S from "fluent-json-schema";
+import { resolve } from "path";
 
-const schema = {
-  NODE_ENV: {
-    type: String,
-    optional: false,
-  },
-  MONGO_HOST: {
-    type: String,
-    default: "localhost",
-  },
-  MONGO_PORT: {
-    type: String,
-    default: "27017",
-  },
-  MONGO_DATABASE: {
-    type: String,
-    default: "shameless",
-  },
-  MONGO_USERNAME: {
-    type: String,
-    optional: true,
-  },
-  MONGO_PASSWORD: {
-    type: String,
-    optional: true,
-  },
-} as const;
+const isTest = new Boolean(process.env.IS_TEST);
+console.log(isTest ? resolve("./.test.env") : resolve("./.env"));
 
-export type Env = EnvType<typeof schema>;
-export let env: Env;
+const env = envSchema({
+  schema: S.object()
+    .prop(
+      "NODE_ENV",
+      S.enum(["local", "test", "development", "production"]).required()
+    )
+    .prop("PORT", S.number().default(3000).required())
+    .prop("MONGO_HOST", S.string().default("localhost").required())
+    .prop("MONGO_PORT", S.number().default(27017).required())
+    .prop("MONGO_PASSWORD", S.string().default("localhost"))
+    .prop("MONGO_DATABASE", S.string().default("shameless").required()),
+  dotenv: {
+    path: isTest ? resolve("./.test.env") : resolve("./.env"),
+  },
+  expandEnv: false,
+});
 
-export function loadEnv(): void {
-  env = load(schema);
-}
+export default env;

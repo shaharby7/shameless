@@ -2,7 +2,7 @@
   "compilerOptions": {
     "types": [
         "node",
-        "ts-node"
+        "jest"
       ],
     "incremental": true,
     "target": "es2019",
@@ -15,5 +15,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true
-  }
+  },
+  "exclude": ["node_modules"]
 }

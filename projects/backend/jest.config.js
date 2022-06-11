@@ -9,7 +9,7 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  globalSetup:"./tests/register",
+  globalSetup:"./src/tests/register",
   bail: 0,
   cacheDirectory: "/tmp/jest_rs",
   clearMocks: true,
@@ -19,5 +19,6 @@ module.exports = {
   coveragePathIgnorePatterns: ["/node_modules/"],
   coverageProvider: "v8",
   moduleDirectories: ["node_modules"],
-  testMatch: [`tests/*.test.ts`],
+  testMatch: [`**/src/tests/**/*.test.ts`],
+  testTimeout:0,
 };

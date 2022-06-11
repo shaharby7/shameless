@@ -6,11 +6,14 @@
 /* eslint-disable */
 const tsNode = require('ts-node');
 
+delete process.env.NODE_ENV
+process.env.IS_TEST = true;
+
 /* eslint-disable */
 module.exports = () => {
     tsNode.register({
         files: true,
         transpileOnly: true,
-        project: './tests/tsconfig.json'
+        project: './tsconfig.json'
     });
 }
